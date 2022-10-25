@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 
 namespace AStack
 {
-    internal class MyStack
+
+    class MyStack : ICloneable
+
     {
         static readonly int MAX = 1000;
         int top;
@@ -43,7 +47,8 @@ namespace AStack
                 int value = stack[top--];
                 return value;
             }
-        }
+        } 
+        
         internal void Peek()
         {
             if (top < 0)
@@ -67,15 +72,13 @@ namespace AStack
                 Console.Write("[");
                 for (int i = top; i > 0; i--)
                 {
-                    Console.Write(" "+stack[i]+" ");
+                    Console.Write(" " + stack[i] + " ");
                 }
                 Console.Write("]");
                 Console.WriteLine();
             }
         }
-
-
-
-
     }
+
+
 }

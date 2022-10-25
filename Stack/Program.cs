@@ -6,7 +6,7 @@ namespace AStack
     {
         public static void Main(String[] args)
         {
-           
+
             MyStack myStack = new MyStack();
             myStack.Push(10);
             myStack.Push(20);
@@ -16,7 +16,7 @@ namespace AStack
             myStack.Peek();
             Console.WriteLine(" \n Item popped from Stack : {0}", myStack.Pop());
             myStack.PrintStack();
-
+           
         }
     }
 }
