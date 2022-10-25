@@ -7,10 +7,10 @@ using System.Text;
 namespace AStack
 {
 
-    class MyStack : ICloneable
+    class MyStack
 
     {
-        static readonly int MAX = 1000;
+        static readonly int MAX = 5;
         int top;
         int[] stack = new int[MAX];
 
@@ -31,13 +31,20 @@ namespace AStack
             }
             else
             {
-                stack[++top] = data;
+                try
+                {
+                    stack[++top] = data;
+                }
+                catch (Exception error)
+                {
+                    Console.WriteLine("\n ERR !!! : " + error.Message + "\n");
+                }
                 return true;
             }
         }
         internal int Pop()
         {
-            if (top < 0)
+            if (top <= 0)
             {
                 Console.WriteLine("Stack Underflow");
                 return 0;
@@ -47,37 +54,58 @@ namespace AStack
                 int value = stack[top--];
                 return value;
             }
-        } 
-        
+        }
+
         internal void Peek()
         {
-            if (top < 0)
+            if (top <= 0)
             {
                 Console.WriteLine(" \n Stack Underflow");
                 return;
             }
             else
-                Console.WriteLine("\n The topmost element of Stack is : {0}", stack[top]);
+            {
+                try
+                {
+                    Console.WriteLine("\n The topmost element of Stack is : {0}", stack[top]);
+
+                }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+            }
         }
+
+
+
         internal void PrintStack()
         {
-            if (top < 0)
+            if (top <= 0)
             {
-                Console.WriteLine(" \n Stack Underflow");
-                return;
+                 Console.WriteLine(" \n Stack Underflow ");
             }
             else
             {
-                Console.WriteLine(" \n Items in the Stack are :\n ");
-                Console.Write("[");
-                for (int i = top; i > 0; i--)
+                try
                 {
-                    Console.Write(" " + stack[i] + " ");
+                    for (int i = top; i > 0; i--)
+                    {
+                        Console.Write(" " + stack[i] + " ");
+                    }
                 }
-                Console.Write("]");
+                catch (Exception error)
+                {
+                    Console.WriteLine("\n ERR !!! : " + error.Message + "\n");
+                }
+
+
                 Console.WriteLine();
             }
         }
+
+
     }
 
 
