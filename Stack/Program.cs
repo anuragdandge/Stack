@@ -8,7 +8,10 @@ namespace AStack
         {
 
             MyStack myStack = new MyStack();
-            myStack.Peek();
+            myStack.Pop();
+            myStack.PrintStack();
+            //Console.WriteLine(" poped Element {0}",myStack.Pop
+
         }
     }
 }

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Xml.Linq;
 
 namespace AStack
 {
 
+
+
     class MyStack
 
     {
+        
         static readonly int MAX = 5;
         int top;
         int[] stack = new int[MAX];
@@ -26,7 +30,7 @@ namespace AStack
         {
             if (top >= MAX)
             {
-                Console.WriteLine("Stack Overflow");
+                Console.WriteLine("Stack Overflow ( From Push )");
                 return false;
             }
             else
@@ -46,7 +50,7 @@ namespace AStack
         {
             if (top <= 0)
             {
-                Console.WriteLine("Stack Underflow");
+                Console.WriteLine("Stack Underflow ( From Pop )");
                 return 0;
             }
             else
@@ -84,7 +88,7 @@ namespace AStack
         {
             if (top <= 0)
             {
-                 Console.WriteLine(" \n Stack Underflow ");
+                 Console.WriteLine(" \n Stack Underflow (From PrintStack)");
             }
             else
             {
@@ -95,8 +99,10 @@ namespace AStack
                         Console.Write(" " + stack[i] + " ");
                     }
                 }
-                catch (Exception error)
+                catch (StackException error)
                 {
+
+                    throw error;
                     Console.WriteLine("\n ERR !!! : " + error.Message + "\n");
                 }
 
@@ -105,8 +111,19 @@ namespace AStack
             }
         }
 
-
+        
     }
+
+     class StackException : Exception
+    {
+        
+        public  StackException(string str) {
+            Console.WriteLine(str);
+        } 
+        
+    }
+
+   
 
 
 }
